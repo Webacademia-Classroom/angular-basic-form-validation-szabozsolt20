@@ -1,0 +1,46 @@
+{
+  "name": "angular-basic-signals",
+  "version": "1.0.0",
+  "scripts": {
+    "ng": "ng",
+    "server": "json-server --watch server/db.json --port 3000",
+    "start": "concurrently --kill-others \"ng serve\" \"npm run server\"",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "jest -i src/app/page/product/product.component.spec.ts --coverage=false --runInBand"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^17.1.2",
+    "@angular/cdk": "^17.1.2",
+    "@angular/common": "^17.1.2",
+    "@angular/compiler": "^17.1.2",
+    "@angular/core": "^17.1.2",
+    "@angular/flex-layout": "^15.0.0-beta.42",
+    "@angular/forms": "^17.1.2",
+    "@angular/material": "^17.1.2",
+    "@angular/platform-browser": "^17.1.2",
+    "@angular/platform-browser-dynamic": "^17.1.2",
+    "@angular/router": "^17.1.2",
+    "@ngrx/signals": "^17.1.0",
+    "bootstrap": "^5.3.2",
+    "font-awesome": "^4.7.0",
+    "rxjs": "~7.8.1",
+    "tslib": "^2.6.2",
+    "zone.js": "~0.14.3"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^17.1.2",
+    "@angular/cli": "^17.1.2",
+    "@angular/compiler-cli": "^17.1.2",
+    "@types/jest": "^29.5.11",
+    "@types/lodash": "^4.14.202",
+    "@types/node": "^20.11.14",
+    "concurrently": "^8.2.2",
+    "jest": "^29.7.0",
+    "jest-preset-angular": "^14.0.0",
+    "lodash": "^4.17.21",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.3.3"
+  }
+}
