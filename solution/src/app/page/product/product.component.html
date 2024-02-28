@@ -1,0 +1,120 @@
+@if (list() | filter:filterText(); as list) {
+
+  <div class="row">
+    <div class="col-12 col-md-4 mx-1">
+      <input
+        (input)="updateFilterText($event)"
+        type="text"
+        class="form-control"
+        placeholder="Filter">
+      <div class="my-1 list-legend">
+        <!----------------------------------------------------
+          TODO!
+          Test name: {{ list.length }}/{{ listQty }} rows in the table should be shown
+          Use the if-else statement.
+          If the length of the list greater than 0, show this:
+            {{ list.length }}/{{ listQty }} rows in the table
+          else, show this:
+            no products
+         ----------------------------------------------------->
+
+
+      </div>
+    </div>
+    <div class="col-6 col-md-2 text-center">
+      <div><strong>Sum</strong></div>
+      <div>
+        <strong class="sumprice-container">
+          <!----------------------------------------------------
+            TODO!
+            Test name: sumPrice or the "no products" text should be shown
+            Use the if-else statement.
+            If the value of the sumPrice signal greater than 0, show it,
+            else show the following text:
+            no products
+           ----------------------------------------------------->
+
+
+        </strong>
+      </div>
+    </div>
+    <div class="col-6 col-md-2 text-center">
+      <div>
+        <strong>Actives</strong>
+      </div>
+      <div>
+        <strong class="activeqty-container">
+          <!---------------------------------------------------
+            TODO!
+            Test name: activeQty or the "no products" text should be shown
+            Use the if-else statement.
+            It the value of the activeQty signal greater than 0, show it,
+            else show the following text:
+            no actives
+           ---------------------------------------------------->
+
+
+        </strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="row my-3">
+    <div class="col-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <!-----------------------------------------------------
+              TODO!
+              Test name: table headers should be shown
+              Use the for loop.
+              1. Create a for loop that go through displayedColumns, tracks by $index.
+              2. Place a th element in the loop.
+              3. Interpolate the item in the th element.
+             ------------------------------------------------------>
+
+
+            <th>manage</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (element of list; track $index) {
+            <tr>
+              <!-------------------------------------------------------
+                TODO!
+                Test name: table rows should contain correct data
+                Use the for loop.
+                1. Create a for loop that go through displayedColumns, tracks by $index.
+                2. Place a td element in the loop.
+                3. Iterpolate the property of element by the col.
+                  Example: element[col]
+               -------------------------------------------------------->
+
+
+
+              <td>
+                <div class="btn-group">
+                  <!----------------------------------------------------------
+                    TODO!
+                    Test name: info button should not appear if the product is inactive
+                    Use the if-else block.
+                    Wrap the following button with an if statement.
+                    Show the button, only if the element.active property is true.
+                   ----------------------------------------------------------->
+                  <button [routerLink]="['/product', 'edit', element.id]" class="btn btn-info">
+                    <i class="fa fa-edit"></i>
+                  </button>
+
+                  <button (click)="onRemove(element)" class="btn btn-danger">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+}
