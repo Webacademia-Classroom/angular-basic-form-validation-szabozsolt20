@@ -1,0 +1,46 @@
+@if (product$ | async; as product) {
+  <form #editForm="ngForm" (ngSubmit)="onSubmit(product)" class="w-50 mx-auto mt-5">
+    <div class="form-group">
+      <label>Name</label>
+      <input [(ngModel)]="product.name" name="name" type="text" class="form-control"
+        pattern="^[a-zA-Z \.\-0-9]{3,}$"
+        required>
+      @if (editForm.controls['name'].invalid) {
+        <small class="form-text text-danger">3 letters min</small>
+      }
+    </div>
+    <div class="form-group">
+      <label>Price</label>
+      <input [(ngModel)]="product.price" name="price" type="text" class="form-control"
+        pattern="^[1-9][0-9]*$"
+        required>
+        @if (editForm.controls['price'].invalid) {
+          <small class="form-text text-danger">positive integer</small>
+        }
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <input [(ngModel)]="product.description" name="description" type="text" class="form-control"
+        pattern="^[\s\S]{5,}$">
+      @if (editForm.controls['description'].invalid) {
+        <small class="form-text text-danger">5 chars min</small>
+      }
+    </div>
+    <div class="form-check mt-2">
+      <input [(ngModel)]="product.active" name="active" class="form-check-input" type="checkbox" id="flexCheckDefault">
+      <label class="form-check-label" for="flexCheckDefault">
+        active
+      </label>
+    </div>
+
+    <input type="hidden" name="id" [(ngModel)]="product.id">
+
+    <!-- Create a bootstrap block button -->
+    <div class="d-grid gap-2 mt-3">
+      <button [disabled]="editForm.invalid" type="submit" class="btn btn-primary mt-3">
+        <i class="fa fa-save"></i> Save
+      </button>
+    </div>
+
+  </form>
+}
