@@ -1,0 +1,9 @@
+nav {
+  a {
+    &.nav-link {
+      &.active {
+        font-weight: 500;
+      }
+    }
+  }
+}

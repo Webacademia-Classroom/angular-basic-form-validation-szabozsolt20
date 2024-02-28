@@ -1,0 +1,50 @@
+@if (customer$ | async; as customer) {
+  <form #customerForm="ngForm" (ngSubmit)="onSubmit(customer)" class="w-50 mx-auto mt-5">
+    <div class="form-group">
+      <label>Name</label>
+      <input [(ngModel)]="customer.name" name="name" type="text" class="form-control"
+      pattern="^[a-zA-Z \.\-0-9]{3,}$"
+      required>
+      @if (customerForm.controls['name']?.invalid) {
+        <small class="form-text text-danger">3 letters min</small>
+      }
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input email required [(ngModel)]="customer.email" name="email" type="email" class="form-control">
+      @if (customerForm.controls['email']?.invalid) {
+        <small class="form-text text-danger">give a valid email</small>
+      }
+    </div>
+    <div class="form-group">
+      <label>Address</label>
+      <input required pattern="^[a-zA-Z \.\-0-9]{3,}$" [(ngModel)]="customer.address" name="address" type="text" class="form-control">
+      @if (customerForm.controls['address']?.invalid) {
+        <small class="form-text text-danger">3 letters min</small>
+      }
+    </div>
+    <div class="form-group">
+      <label>IP</label>
+      <input required pattern="^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$" [(ngModel)]="customer.ip_address" name="ip_address" type="text" class="form-control">
+      @if (customerForm.controls['ip_address']?.invalid) {
+        <small class="form-text text-danger">give a valid IP</small>
+      }
+    </div>
+    <div class="form-check mt-2">
+      <input [(ngModel)]="customer.active" name="active" class="form-check-input" type="checkbox" id="flexCheckDefault">
+      <label class="form-check-label" for="flexCheckDefault">
+        active
+      </label>
+    </div>
+
+    <input type="hidden" name="id" [(ngModel)]="customer.id">
+
+    <!-- Bootstrap 5 block button -->
+    <div class="d-grid gap-2">
+      <button [disabled]="customerForm?.invalid" type="submit" class="btn btn-primary">
+        <i class="fa fa-save"></i>
+        Save
+      </button>
+    </div>
+  </form>
+}
