@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-3">
+    <input
+      #ipinput
+      [value]="ipFilter()"
+      (input)="ipFilter.set(ipinput.value)"
+      type="text"
+      class="form-control">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <table class="table table-striped">
+      <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>IP</th>
+        <th>Active</th>
+        <th></th>
+      </thead>
+      <tbody>
+        @for (customer of list | async | ip:ipFilter(); track $index) {
+          <tr>
+            <td>{{ customer.id }}</td>
+            <td>{{ customer.name | uppercase }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.address | lowercase }}</td>
+            <td>{{ customer.ip_address }}</td>
+            <td>{{ customer.active }}</td>
+            <td>
+              <div class="btn-group">
+                <button
+                  [routerLink]="['/customers', 'edit', customer.id]"
+                  type="button"
+                  class="btn btn-info">
+                    <i class="fa fa-edit"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
